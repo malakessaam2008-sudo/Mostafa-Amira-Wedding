@@ -1,225 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mostafa & Amira | Wedding Invitation</title>
-<style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-body {
-  font-family: Georgia, "Times New Roman", serif;
-  background: #f8f5f0;
-  color: #3f3a35;
-  text-align: center;
-}
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 30px 15px;
-  background:
-    linear-gradient(rgba(248,245,240,.78), rgba(248,245,240,.9)),
-    url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=80")
-    center/cover;
-}
-.card {
-  width: 100%;
-  max-width: 650px;
-  padding: 55px 25px;
-  background: rgba(255,255,255,.9);
-  border: 1px solid #d8cfc3;
-  box-shadow: 0 10px 35px rgba(0,0,0,.08);
-}
-.small {
-  font-size: 12px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  margin-bottom: 25px;
-}
-h1 {
-  font-size: clamp(48px, 12vw, 85px);
-  font-weight: normal;
-  line-height: 1;
-}
-.amp {
-  font-size: 35px;
-  margin: 15px 0;
-  font-style: italic;
-}
-.subtitle {
-  margin-top: 30px;
-  font-size: 14px;
-  letter-spacing: 2px;
-  line-height: 1.8;
-}
-.divider {
-  width: 70px;
-  height: 1px;
-  background: #aaa096;
-  margin: 30px auto;
-}
-.date {
-  font-size: 21px;
-  letter-spacing: 3px;
-}
-.countdown {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin: 35px auto;
-  flex-wrap: wrap;
-}
-.time-box {
-  min-width: 75px;
-  padding: 14px 8px;
-  border: 1px solid #d4cbc0;
-}
-.time-box span {
-  display: block;
-  font-size: 26px;
-}
-.time-box small {
-  font-size: 9px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-.section {
-  padding: 70px 20px;
-  background: #fff;
-}
-.section h2 {
-  font-size: 32px;
-  font-weight: normal;
-  margin-bottom: 20px;
-}
-.venue {
-  font-size: 18px;
-  line-height: 1.8;
-}
-.button {
-  display: inline-block;
-  margin-top: 25px;
-  padding: 13px 28px;
-  border: 1px solid #777;
-  color: #3f3a35;
-  text-decoration: none;
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-.button:hover {
-  background: #3f3a35;
-  color: white;
-}
-.footer {
-  padding: 45px 20px;
-  font-size: 12px;
-  letter-spacing: 2px;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mostafa & Amira Wedding</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #faf7f2;
+      color: #3d342d;
+      text-align: center;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding: 35px 20px 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .small-title {
+      font-size: 15px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: normal;
+      margin-bottom: 8px;
+    }
+
+    .and {
+      font-size: 25px;
+      font-style: italic;
+      margin: 5px;
+    }
+
+    .date {
+      font-size: 20px;
+      letter-spacing: 3px;
+      margin: 15px 0 25px;
+    }
+
+    .photo {
+      width: min(90%, 430px);
+      max-height: 560px;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      margin: 10px auto 30px;
+    }
+
+    .message {
+      max-width: 600px;
+      font-size: 18px;
+      line-height: 1.8;
+      margin: 0 auto 30px;
+    }
+
+    .countdown-title {
+      font-size: 16px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 35px;
+    }
+
+    .box {
+      min-width: 75px;
+      padding: 14px 10px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .number {
+      display: block;
+      font-size: 27px;
+      font-weight: bold;
+    }
+
+    .label {
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .venue {
+      margin-top: 10px;
+      padding: 25px 20px;
+      width: min(90%, 600px);
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .venue h2 {
+      font-size: 25px;
+      font-weight: normal;
+      margin-bottom: 12px;
+    }
+
+    .venue p {
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    .map-button {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 12px 24px;
+      background: #3d342d;
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    .footer {
+      margin-top: 35px;
+      font-size: 15px;
+      font-style: italic;
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 38px;
+      }
+
+      .date {
+        font-size: 17px;
+      }
+
+      .message {
+        font-size: 16px;
+      }
+
+      .box {
+        min-width: 65px;
+      }
+
+      .number {
+        font-size: 23px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<section class="hero">
-<div class="card">
-<div class="small">
-Together with their families
-</div>
-<h1>Mostafa</h1>
-<div class="amp">&</div>
-<h1>Amira</h1>
-<div class="subtitle">
-WE INVITE YOU TO CELEBRATE<br>
-THEIR WEDDING
-</div>
-<div class="divider"></div>
-<div class="date">
-01 · 01 · 2027
-</div>
-<div class="countdown">
-<div class="time-box">
-<span id="days">00</span>
-<small>Days</small>
-</div>
-<div class="time-box">
-<span id="hours">00</span>
-<small>Hours</small>
-</div>
-<div class="time-box">
-<span id="minutes">00</span>
-<small>Minutes</small>
-</div>
-<div class="time-box">
-<span id="seconds">00</span>
-<small>Seconds</small>
-</div>
-</div>
-</div>
-</section>
-<section class="section">
-<h2>Wedding Venue</h2>
-<div class="divider"></div>
-<div class="venue">
-<strong>Al Masa Hotel</strong><br>
-Zumorda Hall<br>
-Nasr City, Cairo
-</div>
-<a
-class="button"
-href="https://www.google.com/maps/search/?api=1&query=Al+Masa+Hotel+Nasr+City+Cairo"
-target="_blank">
-Get Directions
-</a>
-</section>
-<section class="section">
-<h2>Your presence</h2>
-<p style="max-width:500px;margin:auto;line-height:1.8;">
-Your presence would be the greatest gift we could receive!
-</p>
-</section>
-<div class="footer">
-MOSTAFA & AMIRA<br><br>
-WITH LOVE
-</div>
-<script>
-const weddingDate =
-new Date("January 1, 2027 20:00:00").getTime();
-function updateCountdown() {
-  const now = new Date().getTime();
-  const distance = weddingDate - now;
-  if (distance <= 0) return;
-  const days =
-    Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours =
-    Math.floor(
-      (distance % (1000 * 60 * 60 * 24)) /
-      (1000 * 60 * 60)
-    );
-  const minutes =
-    Math.floor(
-      (distance % (1000 * 60 * 60)) /
-      (1000 * 60)
-    );
-  const seconds =
-    Math.floor(
-      (distance % (1000 * 60)) /
-      1000
-    );
-  document.getElementById("days").innerHTML =
-    String(days).padStart(2, "0");
-  document.getElementById("hours").innerHTML =
-    String(hours).padStart(2, "0");
-  document.getElementById("minutes").innerHTML =
-    String(minutes).padStart(2, "0");
-  document.getElementById("seconds").innerHTML =
-    String(seconds).padStart(2, "0");
-}
-updateCountdown();
-setInterval(updateCountdown, 1000);
-</script>
+
+  <section class="hero">
+
+    <div class="small-title">
+      Together with their families
+    </div>
+
+    <h1>Mostafa</h1>
+    <div class="and">&</div>
+    <h1>Amira</h1>
+
+    <div class="date">
+      01 · 11 · 2026
+    </div>
+
+    <!-- Your photo -->
+    <img
+      src="couple.jpg"
+      alt="Mostafa and Amira"
+      class="photo"
+    >
+
+    <p class="message">
+      We invite you to celebrate our wedding
+      and share this special day with us.
+      Your presence would be the greatest gift we could receive!
+    </p>
+
+    <div class="countdown-title">
+      Counting down to our wedding
+    </div>
+
+    <div class="countdown">
+
+      <div class="box">
+        <span class="number" id="days">00</span>
+        <span class="label">Days</span>
+      </div>
+
+      <div class="box">
+        <span class="number" id="hours">00</span>
+        <span class="label">Hours</span>
+      </div>
+
+      <div class="box">
+        <span class="number" id="minutes">00</span>
+        <span class="label">Minutes</span>
+      </div>
+
+      <div class="box">
+        <span class="number" id="seconds">00</span>
+        <span class="label">Seconds</span>
+      </div>
+
+    </div>
+
+    <div class="venue">
+
+      <h2>Wedding Venue</h2>
+
+      <p>
+        Al Masa Hotel<br>
+        Nasr City<br>
+        Zumorda Hall
+      </p>
+
+      <a
+        class="map-button"
+        href="https://www.google.com/maps/search/?api=1&query=Al+Masa+Hotel+Nasr+City+Cairo"
+        target="_blank"
+      >
+        📍 View Location
+      </a>
+
+    </div>
+
+    <div class="footer">
+      We can't wait to celebrate with you 🤍
+    </div>
+
+  </section>
+
+
+  <script>
+
+    // Wedding date:
+    // 1 November 2026
+    const weddingDate = new Date("November 1, 2026 20:00:00").getTime();
+
+    function updateCountdown() {
+
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance <= 0) {
+
+        document.getElementById("days").innerHTML = "00";
+        document.getElementById("hours").innerHTML = "00";
+        document.getElementById("minutes").innerHTML = "00";
+        document.getElementById("seconds").innerHTML = "00";
+
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) /
+        (1000 * 60 * 60)
+      );
+
+      const minutes = Math.floor(
+        (distance % (1000 * 60 * 60)) /
+        (1000 * 60)
+      );
+
+      const seconds = Math.floor(
+        (distance % (1000 * 60)) /
+        1000
+      );
+
+      document.getElementById("days").innerHTML =
+        String(days).padStart(2, "0");
+
+      document.getElementById("hours").innerHTML =
+        String(hours).padStart(2, "0");
+
+      document.getElementById("minutes").innerHTML =
+        String(minutes).padStart(2, "0");
+
+      document.getElementById("seconds").innerHTML =
+        String(seconds).padStart(2, "0");
+    }
+
+    updateCountdown();
+
+    setInterval(updateCountdown, 1000);
+
+  </script>
+
 </body>
 </html>
