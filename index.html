@@ -474,6 +474,96 @@ h1 {
     font-size: 48px;
   }
 }
+  .wedding-day::before {
+    font-size: 48px;
+  }
+}
+
+/* WEDDING ANIMATIONS */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gentleZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes softFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.families {
+  animation: fadeUp 1.2s ease both;
+}
+
+h1 {
+  animation: fadeUp 1.3s ease both;
+}
+
+.and {
+  animation: fadeUp 1.5s ease both;
+}
+
+.date {
+  animation: fadeUp 1.7s ease both;
+}
+
+.photo-frame {
+  animation: gentleZoom 1.8s ease both;
+}
+
+.message {
+  animation: fadeUp 1.8s ease both;
+}
+
+.section-title {
+  animation: fadeUp 2s ease both;
+}
+
+.countdown {
+  animation: fadeUp 2.2s ease both;
+}
+
+.time-box {
+  animation: softFloat 3s ease-in-out infinite;
+}
+
+.calendar-card {
+  animation: fadeUp 2.4s ease both;
+}
+
+.venue {
+  animation: fadeUp 2.6s ease both;
+}
+
+.footer {
+  animation: fadeUp 2.8s ease both;
+}
+
+.branch {
+  animation: softFloat 5s ease-in-out infinite;
+}
+
 </style>
 </head>
 <body>
