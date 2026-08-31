@@ -887,6 +887,35 @@ function startFireworks() {
       }, { once: true });
     });
   });
+  /* =========================
+AUTO SCROLL
+========================= */
+
+let autoScrollStarted = false;
+
+function startAutoScroll() {
+if (autoScrollStarted) return;
+autoScrollStarted = true;
+
+let scrollSpeed = 0.6;
+
+function scrollPage() {
+window.scrollBy(0, scrollSpeed);
+
+if (
+  window.innerHeight + window.scrollY <
+  document.body.scrollHeight - 5
+) {
+  requestAnimationFrame(scrollPage);
+}
+
+}
+
+// Start after a short pause
+setTimeout(() => {
+requestAnimationFrame(scrollPage);
+}, 1200);
+}
 </script>
 
 </body>
