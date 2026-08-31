@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mostafa & Amira | Wedding</title>
+<style>
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    background: #fffdf8;
+    color: #3d352c;
+    font-family: Georgia, "Times New Roman", serif;
+    text-align: center;
+}
+.container {
+    min-height: 100vh;
+    padding: 35px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card {
+    width: 100%;
+    max-width: 650px;
+    min-height: 90vh;
+    padding: 55px 25px;
+    border: 1px solid #d5b878;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.card::before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    border: 1px solid #ead8ae;
+    pointer-events: none;
+}
+.small-title {
+    color: #ad8844;
+    letter-spacing: 5px;
+    font-size: 12px;
+    margin-bottom: 30px;
+}
+.names {
+    color: #967235;
+    font-size: clamp(40px, 9vw, 70px);
+    font-weight: normal;
+    line-height: 1.05;
+}
+.and {
+    color: #c09a54;
+    font-size: 30px;
+    margin: 15px 0;
+}
+.invitation {
+    margin-top: 35px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    line-height: 2;
+}
+.line {
+    width: 70px;
+    height: 1px;
+    background: #d5b878;
+    margin: 28px auto;
+}
+.date {
+    color: #967235;
+    font-size: 25px;
+    letter-spacing: 4px;
+}
+.time {
+    margin-top: 12px;
+    letter-spacing: 2px;
+}
+.venue {
+    margin-top: 28px;
+    line-height: 1.8;
+    font-size: 15px;
+}
+.count-title {
+    color: #ad8844;
+    letter-spacing: 3px;
+    font-size: 11px;
+    margin-top: 10px;
+}
+.countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
+    max-width: 450px;
+    margin: 18px auto 30px;
+}
+.box {
+    background: white;
+    border: 1px solid #e2d1a9;
+    padding: 12px 4px;
+}
+.number {
+    color: #967235;
+    font-size: 23px;
+}
+.label {
+    font-size: 9px;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+.button {
+    display: inline-block;
+    background: #a7864c;
+    color: white;
+    text-decoration: none;
+    padding: 14px 25px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+.message {
+    margin-top: 30px;
+    color: #766957;
+    font-size: 12px;
+    font-style: italic;
+}
+@media (max-width: 430px) {
+    .card {
+        min-height: 94vh;
+        padding: 45px 18px;
+    }
+    .date {
+        font-size: 21px;
+    }
+    .number {
+        font-size: 19px;
+    }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="card">
+<div class="small-title">
+WEDDING INVITATION
+</div>
+<div class="names">
+Mostafa Alsheikh
+</div>
+<div class="and">
+&
+</div>
+<div class="names">
+Amira Essam
+</div>
+<div class="invitation">
+TOGETHER WITH THEIR FAMILIES<br>
+WE INVITE YOU TO CELEBRATE THEIR WEDDING
+</div>
+<div class="line"></div>
+<div class="date">
+01 · 11 · 2026
+</div>
+<div class="time">
+6:00 PM
+</div>
+<div class="venue">
+<strong>AL MASA HOTEL</strong><br>
+NASR CITY · ZUMORDA HALL
+</div>
+<div class="line"></div>
+<div class="count-title">
+COUNTDOWN TO OUR WEDDING
+</div>
+<div class="countdown">
+<div class="box">
+<div class="number" id="days">0</div>
+<div class="label">DAYS</div>
+</div>
+<div class="box">
+<div class="number" id="hours">0</div>
+<div class="label">HOURS</div>
+</div>
+<div class="box">
+<div class="number" id="minutes">0</div>
+<div class="label">MINUTES</div>
+</div>
+<div class="box">
+<div class="number" id="seconds">0</div>
+<div class="label">SECONDS</div>
+</div>
+</div>
+<a
+class="button"
+href="https://www.google.com/maps/search/?api=1&query=Al+Masa+Hotel+Nasr+City+Zumorda+Hall"
+target="_blank">
+VIEW LOCATION
+</a>
+<div class="message">
+Your presence would be the greatest gift we could receive.
+</div>
+</div>
+</div>
+<script>
+const weddingDate =
+new Date("2026-11-01T18:00:00+02:00").getTime();
+function countdown() {
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+    if (distance <= 0) {
+        document.getElementById("days").innerHTML = "0";
+        document.getElementById("hours").innerHTML = "0";
+        document.getElementById("minutes").innerHTML = "0";
+        document.getElementById("seconds").innerHTML = "0";
+        return;
+    }
+    const days =
+    Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours =
+    Math.floor(
+        (distance % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
+    );
+    const minutes =
+    Math.floor(
+        (distance % (1000 * 60 * 60))
+        / (1000 * 60)
+    );
+    const seconds =
+    Math.floor(
+        (distance % (1000 * 60))
+        / 1000
+    );
+    document.getElementById("days").innerHTML = days;
+    document.getElementById("hours").innerHTML =
+    String(hours).padStart(2, "0");
+    document.getElementById("minutes").innerHTML =
+    String(minutes).padStart(2, "0");
+    document.getElementById("seconds").innerHTML =
+    String(seconds).padStart(2, "0");
+}
+countdown();
+setInterval(countdown, 1000);
+</script>
+</body>
+</html>
