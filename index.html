@@ -480,88 +480,55 @@ h1 {
 }
 
 /* WEDDING ANIMATIONS */
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(35px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes gentleZoom {
-  from {
-    opacity: 0;
-    transform: scale(0.94);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes softFloat {
+@keyframes floating {
   0%, 100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-8px);
+    transform: translateY(-10px);
   }
 }
 
-.families {
-  animation: fadeUp 1.2s ease both;
+@keyframes breathing {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.025);
+  }
 }
 
-h1 {
-  animation: fadeUp 1.3s ease both;
-}
-
-.and {
-  animation: fadeUp 1.5s ease both;
-}
-
-.date {
-  animation: fadeUp 1.7s ease both;
+@keyframes sway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
 }
 
 .photo-frame {
-  animation: gentleZoom 1.8s ease both;
+  animation: breathing 4s ease-in-out infinite;
 }
 
-.message {
-  animation: fadeUp 1.8s ease both;
-}
-
-.section-title {
-  animation: fadeUp 2s ease both;
-}
-
-.countdown {
-  animation: fadeUp 2.2s ease both;
-}
-
-.time-box {
-  animation: softFloat 3s ease-in-out infinite;
-}
-
-.calendar-card {
-  animation: fadeUp 2.4s ease both;
-}
-
-.venue {
-  animation: fadeUp 2.6s ease both;
-}
-
-.footer {
-  animation: fadeUp 2.8s ease both;
+.photo-card {
+  animation: floating 4s ease-in-out infinite;
 }
 
 .branch {
-  animation: softFloat 5s ease-in-out infinite;
+  animation: sway 5s ease-in-out infinite;
+}
+
+.open-card {
+  animation: breathing 4s ease-in-out infinite;
+}
+
+.time-box {
+  animation: floating 3s ease-in-out infinite;
+}
+
+.wedding-day::before {
+  animation: breathing 2.5s ease-in-out infinite;
 }
 
 </style>
