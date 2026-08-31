@@ -9,160 +9,207 @@
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     body {
+      margin: 0;
+      background: #f8f6f1;
+      color: #403a35;
       font-family: Georgia, "Times New Roman", serif;
-      background: #faf7f2;
-      color: #3d342d;
       text-align: center;
     }
 
-    .hero {
-      min-height: 100vh;
-      padding: 35px 20px 50px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    .container {
+      width: 100%;
+      max-width: 850px;
+      margin: auto;
+      padding: 55px 25px 80px;
     }
 
-    .small-title {
-      font-size: 15px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      margin-bottom: 18px;
+    .families {
+      font-size: 22px;
+      letter-spacing: 7px;
+      margin-bottom: 45px;
+      line-height: 1.5;
     }
 
     h1 {
-      font-size: 48px;
+      font-size: 76px;
       font-weight: normal;
-      margin-bottom: 8px;
+      margin: 0;
+      line-height: 1.05;
     }
 
     .and {
-      font-size: 25px;
-      font-style: italic;
-      margin: 5px;
+      font-size: 50px;
+      margin: 25px 0;
     }
 
     .date {
-      font-size: 20px;
-      letter-spacing: 3px;
-      margin: 15px 0 25px;
+      font-size: 29px;
+      letter-spacing: 8px;
+      margin-top: 55px;
+      margin-bottom: 70px;
+    }
+
+    .photo-card {
+      width: 100%;
+      max-width: 670px;
+      margin: auto;
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
     }
 
     .photo {
-      width: min(90%, 430px);
-      max-height: 560px;
-      object-fit: cover;
-      border-radius: 8px;
       display: block;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-      margin: 10px auto 30px;
+      width: 100%;
+      height: auto;
+      max-height: 850px;
+      object-fit: cover;
     }
 
     .message {
-      max-width: 600px;
-      font-size: 18px;
-      line-height: 1.8;
-      margin: 0 auto 30px;
+      max-width: 720px;
+      margin: 55px auto 80px;
+      font-size: 25px;
+      line-height: 1.9;
     }
 
-    .countdown-title {
-      font-size: 16px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 15px;
+    .section-title {
+      font-size: 28px;
+      letter-spacing: 7px;
+      margin-bottom: 35px;
+      line-height: 1.5;
     }
 
     .countdown {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 35px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      max-width: 700px;
+      margin: auto;
     }
 
-    .box {
-      min-width: 75px;
-      padding: 14px 10px;
+    .time-box {
       background: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border-radius: 16px;
+      padding: 25px 10px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
     }
 
     .number {
       display: block;
-      font-size: 27px;
+      font-size: 42px;
       font-weight: bold;
     }
 
     .label {
-      font-size: 11px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+      display: block;
+      margin-top: 10px;
+      font-size: 14px;
+      letter-spacing: 3px;
     }
 
     .venue {
-      margin-top: 10px;
-      padding: 25px 20px;
-      width: min(90%, 600px);
+      margin-top: 90px;
+      padding: 45px 20px;
       background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
     }
 
     .venue h2 {
-      font-size: 25px;
+      font-size: 32px;
       font-weight: normal;
-      margin-bottom: 12px;
+      letter-spacing: 4px;
     }
 
     .venue p {
+      font-size: 21px;
       line-height: 1.7;
-      font-size: 17px;
     }
 
     .map-button {
       display: inline-block;
-      margin-top: 18px;
-      padding: 12px 24px;
-      background: #3d342d;
+      margin-top: 20px;
+      padding: 14px 28px;
+      background: #403a35;
       color: white;
       text-decoration: none;
-      border-radius: 25px;
+      border-radius: 30px;
       font-family: Arial, sans-serif;
-      font-size: 14px;
+      font-size: 16px;
     }
 
     .footer {
-      margin-top: 35px;
-      font-size: 15px;
-      font-style: italic;
+      margin-top: 70px;
+      font-size: 18px;
+      letter-spacing: 3px;
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
+
+      .container {
+        padding: 40px 18px 60px;
+      }
+
+      .families {
+        font-size: 16px;
+        letter-spacing: 4px;
+      }
+
       h1 {
+        font-size: 55px;
+      }
+
+      .and {
         font-size: 38px;
+        margin: 18px 0;
       }
 
       .date {
-        font-size: 17px;
+        font-size: 22px;
+        letter-spacing: 5px;
+        margin-top: 40px;
+        margin-bottom: 50px;
       }
 
       .message {
-        font-size: 16px;
+        font-size: 21px;
+        line-height: 1.8;
+        margin: 45px auto 65px;
       }
 
-      .box {
-        min-width: 65px;
+      .section-title {
+        font-size: 22px;
+        letter-spacing: 5px;
+      }
+
+      .countdown {
+        gap: 8px;
+      }
+
+      .time-box {
+        padding: 18px 5px;
       }
 
       .number {
-        font-size: 23px;
+        font-size: 30px;
+      }
+
+      .label {
+        font-size: 10px;
+        letter-spacing: 1px;
+      }
+
+      .venue h2 {
+        font-size: 27px;
+      }
+
+      .venue p {
+        font-size: 18px;
       }
     }
   </style>
@@ -170,61 +217,76 @@
 
 <body>
 
-  <section class="hero">
+  <div class="container">
 
-    <div class="small-title">
-      Together with their families
+    <div class="families">
+      TOGETHER WITH THEIR<br>
+      FAMILIES
     </div>
 
     <h1>Mostafa</h1>
-    <div class="and">&</div>
+
+    <div class="and">&amp;</div>
+
     <h1>Amira</h1>
 
     <div class="date">
       01 · 11 · 2026
     </div>
 
-    <!-- Your photo -->
-    <img src="./couple.jpg" alt="Mostafa and Amira" class="photo">
-    >
+
+    <!-- PHOTO -->
+    <div class="photo-card">
+      <img
+        src="./couple.jpg"
+        alt="Mostafa and Amira"
+        class="photo"
+      >
+    </div>
+
 
     <p class="message">
-      We invite you to celebrate our wedding
-      and share this special day with us.
-      Your presence would be the greatest gift we could receive!
+      We invite you to celebrate our wedding and share
+      this special day with us. Your presence would be
+      the greatest gift we could receive!
     </p>
 
-    <div class="countdown-title">
-      Counting down to our wedding
+
+    <!-- COUNTDOWN -->
+    <div class="section-title">
+      COUNTING DOWN TO OUR<br>
+      WEDDING
     </div>
 
     <div class="countdown">
 
-      <div class="box">
-        <span class="number" id="days">00</span>
-        <span class="label">Days</span>
+      <div class="time-box">
+        <span class="number" id="days">0</span>
+        <span class="label">DAYS</span>
       </div>
 
-      <div class="box">
-        <span class="number" id="hours">00</span>
-        <span class="label">Hours</span>
+      <div class="time-box">
+        <span class="number" id="hours">0</span>
+        <span class="label">HOURS</span>
       </div>
 
-      <div class="box">
-        <span class="number" id="minutes">00</span>
-        <span class="label">Minutes</span>
+      <div class="time-box">
+        <span class="number" id="minutes">0</span>
+        <span class="label">MINUTES</span>
       </div>
 
-      <div class="box">
-        <span class="number" id="seconds">00</span>
-        <span class="label">Seconds</span>
+      <div class="time-box">
+        <span class="number" id="seconds">0</span>
+        <span class="label">SECONDS</span>
       </div>
 
     </div>
 
+
+    <!-- VENUE -->
     <div class="venue">
 
-      <h2>Wedding Venue</h2>
+      <h2>WEDDING VENUE</h2>
 
       <p>
         Al Masa Hotel<br>
@@ -237,65 +299,63 @@
         href="https://www.google.com/maps/search/?api=1&query=Al+Masa+Hotel+Nasr+City+Cairo"
         target="_blank"
       >
-        📍 View Location
+        📍 VIEW LOCATION
       </a>
 
     </div>
 
+
     <div class="footer">
-      We can't wait to celebrate with you 🤍
+      MOSTAFA &amp; AMIRA
     </div>
 
-  </section>
+  </div>
 
 
   <script>
 
-    // Wedding date:
-    // 1 November 2026
-    const weddingDate = new Date("November 1, 2026 20:00:00").getTime();
+    // Wedding date: November 1, 2026
+    const weddingDate = new Date("2026-11-01T00:00:00").getTime();
 
     function updateCountdown() {
 
       const now = new Date().getTime();
-      const distance = weddingDate - now;
+      const difference = weddingDate - now;
 
-      if (distance <= 0) {
+      if (difference <= 0) {
 
-        document.getElementById("days").innerHTML = "00";
-        document.getElementById("hours").innerHTML = "00";
-        document.getElementById("minutes").innerHTML = "00";
-        document.getElementById("seconds").innerHTML = "00";
+        document.getElementById("days").textContent = "0";
+        document.getElementById("hours").textContent = "0";
+        document.getElementById("minutes").textContent = "0";
+        document.getElementById("seconds").textContent = "0";
 
         return;
       }
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const days = Math.floor(
+        difference / (1000 * 60 * 60 * 24)
+      );
+
       const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) /
-        (1000 * 60 * 60)
+        (difference / (1000 * 60 * 60)) % 24
       );
 
       const minutes = Math.floor(
-        (distance % (1000 * 60 * 60)) /
-        (1000 * 60)
+        (difference / (1000 * 60)) % 60
       );
 
       const seconds = Math.floor(
-        (distance % (1000 * 60)) /
-        1000
+        (difference / 1000) % 60
       );
 
-      document.getElementById("days").innerHTML =
-        String(days).padStart(2, "0");
-
-      document.getElementById("hours").innerHTML =
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent =
         String(hours).padStart(2, "0");
 
-      document.getElementById("minutes").innerHTML =
+      document.getElementById("minutes").textContent =
         String(minutes).padStart(2, "0");
 
-      document.getElementById("seconds").innerHTML =
+      document.getElementById("seconds").textContent =
         String(seconds).padStart(2, "0");
     }
 
