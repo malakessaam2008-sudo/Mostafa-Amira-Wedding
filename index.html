@@ -18,6 +18,84 @@
       overflow-x: hidden;
     }
     /* =========================
+       FIREWORKS OPENING
+       ========================= */
+    #fireworks {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: #f8f6f1;
+      z-index: 9999;
+      pointer-events: none;
+      animation: fireworksFade 4.5s ease forwards;
+    }
+    .firework {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #c9b59b;
+      box-shadow:
+        0 -55px 0 #c9b59b,
+        0 55px 0 #c9b59b,
+        55px 0 0 #c9b59b,
+        -55px 0 0 #c9b59b,
+        39px 39px 0 #d8c7b3,
+        -39px -39px 0 #d8c7b3,
+        39px -39px 0 #d8c7b3,
+        -39px 39px 0 #d8c7b3;
+      
+      animation: explode 1.6s ease-out infinite;
+    }
+    .firework.one {
+      top: 35%;
+      left: 30%;
+      animation-delay: 0s;
+    }
+    .firework.two {
+      top: 25%;
+      left: 65%;
+      animation-delay: 0.7s;
+      transform: scale(0.8);
+    }
+    .firework.three {
+      top: 55%;
+      left: 50%;
+      animation-delay: 1.3s;
+      transform: scale(0.65);
+    }
+    @keyframes explode {
+      0% {
+        opacity: 0;
+        transform: scale(0.1);
+      }
+      15% {
+        opacity: 1;
+      }
+      70% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.5);
+      }
+    }
+    @keyframes fireworksFade {
+      0% {
+        opacity: 1;
+        visibility: visible;
+      }
+      75% {
+        opacity: 1;
+        visibility: visible;
+      }
+      100% {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+    /* =========================
        BEIGE BRANCH DECORATIONS
        ========================= */
     .branch {
@@ -46,14 +124,12 @@
       border-radius: 50%;
       transform-origin: left center;
     }
-    /* Leaves */
     .leaf {
       position: absolute;
       width: 24px;
       height: 11px;
       background: #d2bea5;
       border-radius: 100% 0 100% 0;
-      transform: rotate(-35deg);
     }
     .leaf:nth-child(1) {
       top: 35px;
@@ -80,7 +156,6 @@
       left: 140px;
       transform: rotate(-25deg);
     }
-    /* Top Left */
     .top-left {
       top: -25px;
       left: -35px;
@@ -96,7 +171,6 @@
       left: 40px;
       transform: rotate(55deg);
     }
-    /* Top Right */
     .top-right {
       top: -25px;
       right: -35px;
@@ -112,7 +186,6 @@
       left: 40px;
       transform: rotate(55deg);
     }
-    /* Bottom Left */
     .bottom-left {
       bottom: -35px;
       left: -35px;
@@ -128,7 +201,6 @@
       left: 40px;
       transform: rotate(55deg);
     }
-    /* Bottom Right */
     .bottom-right {
       bottom: -35px;
       right: -35px;
@@ -176,6 +248,13 @@
       letter-spacing: 8px;
       margin-top: 55px;
       margin-bottom: 70px;
+    }
+    .time {
+      display: block;
+      font-size: 18px;
+      letter-spacing: 4px;
+      margin-top: 18px;
+      color: #9f8d78;
     }
     .photo-card {
       width: 100%;
@@ -302,6 +381,11 @@
         margin-top: 40px;
         margin-bottom: 50px;
       }
+      .time {
+        font-size: 13px;
+        letter-spacing: 2px;
+        margin-top: 15px;
+      }
       .message {
         font-size: 21px;
         line-height: 1.8;
@@ -334,6 +418,12 @@
   </style>
 </head>
 <body>
+  <!-- 🎆 FIREWORKS -->
+  <div id="fireworks">
+    <div class="firework one"></div>
+    <div class="firework two"></div>
+    <div class="firework three"></div>
+  </div>
   <!-- 🌿 BEIGE BRANCHES -->
   <div class="branch top-left">
     <span class="leaf"></span>
@@ -363,6 +453,7 @@
     <span class="leaf"></span>
     <span class="leaf"></span>
   </div>
+  <!-- MAIN CONTENT -->
   <div class="container">
     <div class="families">
       TOGETHER WITH THEIR<br>
@@ -373,6 +464,10 @@
     <h1>Amira</h1>
     <div class="date">
       01 · 11 · 2026
+      <br>
+      <span class="time">
+        AT SIX O'CLOCK IN THE EVENING
+      </span>
     </div>
     <!-- PHOTO -->
     <div class="photo-card">
@@ -382,6 +477,7 @@
         class="photo"
       >
     </div>
+    <!-- MESSAGE -->
     <p class="message">
       We invite you to celebrate our wedding and share
       this special day with us. Your presence would be
@@ -430,10 +526,10 @@
       MOSTAFA &amp; AMIRA
     </div>
   </div>
+  <!-- COUNTDOWN SCRIPT -->
   <script>
-    // Wedding date: November 1, 2026
     const weddingDate =
-      new Date("2026-11-01T00:00:00").getTime();
+      new Date("2026-11-01T18:00:00").getTime();
     function updateCountdown() {
       const now = new Date().getTime();
       const difference = weddingDate - now;
