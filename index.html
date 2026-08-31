@@ -816,5 +816,20 @@ function startFireworks() {
   animate();
 }
 </script>
+<audio id="weddingMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const music = document.getElementById("weddingMusic");
+
+  window.addEventListener("load", () => {
+    music.play().catch(() => {
+      document.addEventListener("click", () => {
+        music.play();
+      }, { once: true });
+    });
+  });
+</script>
 </body>
 </html>
