@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mostafa & Amira Wedding</title>
+<style>
+* {
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    background: #f8f5ef;
+    color: #403a35;
+    font-family: Georgia, "Times New Roman", serif;
+    overflow-x: hidden;
+}
+/* =========================================
+   CURTAIN
+========================================= */
+#curtainScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    overflow: hidden;
+    background: #eee7dc;
+    transition:
+        opacity 1.5s ease,
+        visibility 1.5s ease;
+}
+.curtain {
+    width: 50%;
+    height: 100%;
+    background:
+        linear-gradient(
+            90deg,
+            #cfc3b3 0%,
+            #eee7dc 15%,
+            #c9bcab 32%,
+            #f2ece3 48%,
+            #c9bcab 65%,
+            #eee7dc 82%,
+            #cfc3b3 100%
+        );
+    box-shadow:
+        inset 0 0 45px rgba(70,55,40,.18);
+    transition:
+        transform 2.5s cubic-bezier(.77,0,.18,1);
+}
+.curtain.left {
+    border-right: 1px solid rgba(80,65,50,.12);
+}
+.curtain.right {
+    border-left: 1px solid rgba(80,65,50,.12);
+}
+#curtainScreen.open .curtain.left {
+    transform: translateX(-100%);
+}
+#curtainScreen.open .curtain.right {
+    transform: translateX(100%);
+}
+/* =========================================
+   CURTAIN TEXT
+========================================= */
+.curtainContent {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: opacity .8s ease;
+}
+#curtainScreen.open .curtainContent {
+    opacity: 0;
+}
+.curtainSmall {
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.curtainNames {
+    margin: 0;
+    font-size: clamp(42px, 9vw, 78px);
+    font-weight: normal;
+    letter-spacing: 3px;
+}
+.curtainDate {
+    margin-top: 22px;
+    font-size: 15px;
+    letter-spacing: 4px;
+}
+/* =========================================
+   BRANCHES
+========================================= */
+.branch {
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    pointer-events: none;
+    opacity: .55;
+    z-index: 2;
+}
+.branch::before {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 220px;
+    background: #827969;
+    border-radius: 10px;
+    left: 105px;
+    top: 0;
+    transform: rotate(-35deg);
+}
+.branch::after {
+    content: "❧";
+    position: absolute;
+    color: #89917d;
+    font-size: 130px;
+    left: 10px;
+    top: 45px;
+    transform: rotate(-15deg);
+}
+.topLeft {
+    top: -55px;
+    left: -65px;
+    transform: rotate(-15deg);
+}
+.topRight {
+    top: -55px;
+    right: -65px;
+    transform: scaleX(-1) rotate(-15deg);
+}
+.bottomLeft {
+    bottom: -55px;
+    left: -65px;
+    transform: rotate(35deg);
+}
+.bottomRight {
+    bottom: -55px;
+    right: -65px;
+    transform: scaleX(-1) rotate(35deg);
+}
+/* =========================================
+   HERO
+========================================= */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 20px;
+    position: relative;
+    overflow: hidden;
+}
+.heroInner {
+    width: 100%;
+    max-width: 900px;
+    animation: fadeUp 1.5s ease both;
+}
+.smallText {
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+.names {
+    margin: 18px 0;
+    font-size: clamp(55px, 12vw, 110px);
+    font-weight: normal;
+    line-height: .9;
+    letter-spacing: 2px;
+}
+.and {
+    font-size: 35px;
+    font-style: italic;
+    color: #8c8175;
+}
+.date {
+    margin-top: 35px;
+    font-size: 19px;
+    letter-spacing: 6px;
+}
+.scrollText {
+    margin-top: 65px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    animation: bounce 2s infinite;
+}
+.scrollArrow {
+    margin-top: 8px;
+    font-size: 25px;
+}
+/* =========================================
+   PHOTO
+========================================= */
+.photoSection {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+}
+.photoWrapper {
+    width: min(430px, 90vw);
+    animation: fadeUp 1.5s ease both;
+}
+.photoFrame {
+    padding: 10px;
+    background: white;
+    box-shadow:
+        0 18px 50px rgba(70,60,50,.18);
+}
+.photoFrame img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+}
+.photoCaption {
+    margin-top: 30px;
+}
+.photoCaption h2 {
+    margin: 0;
+    font-size: 38px;
+    font-weight: normal;
+}
+.photoCaption p {
+    margin-top: 12px;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+/* =========================================
+   COUNTDOWN
+========================================= */
+.countdownSection {
+    min-height: auto;
+    padding: 100px 20px;
+    text-align: center;
+    background: #eee8df;
+    position: relative;
+    overflow: hidden;
+}
+.sectionTitle {
+    margin: 0;
+    font-size: 42px;
+    font-weight: normal;
+}
+.sectionSubtitle {
+    margin-top: 12px;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+.countdown {
+    margin-top: 55px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.timeBox {
+    width: 105px;
+    padding: 22px 10px;
+    background: rgba(255,255,255,.5);
+    border: 1px solid #b9afa3;
+}
+.timeNumber {
+    display: block;
+    font-size: 36px;
+    margin-bottom: 7px;
+}
+.timeLabel {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+/* =========================================
+   DETAILS
+========================================= */
+.details {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+}
+.detailsInner {
+    width: min(700px, 100%);
+}
+.detailCard {
+    padding: 50px 25px;
+    border-top: 1px solid #b9afa3;
+    border-bottom: 1px solid #b9afa3;
+}
+.detailIcon {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+.detailCard h2 {
+    margin: 15px 0 30px;
+    font-size: 40px;
+    font-weight: normal;
+}
+.detailCard p {
+    margin: 7px 0;
+    font-size: 17px;
+    line-height: 1.8;
+}
+.mapButton {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 13px 30px;
+    border: 1px solid #625a52;
+    border-radius: 30px;
+    color: #403a35;
+    text-decoration: none;
+    transition: .3s;
+}
+.mapButton:hover {
+    background: #403a35;
+    color: white;
+}
+/* =========================================
+   FINAL
+========================================= */
+.finalSection {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    background: #eee8df;
+}
+.finalNames {
+    margin: 20px 0;
+    font-size: clamp(48px, 11vw, 95px);
+    font-weight: normal;
+}
+.finalSection p {
+    font-size: 15px;
+    letter-spacing: 4px;
+}
+/* =========================================
+   ANIMATIONS
+========================================= */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform:
+            translateY(35px);
+    }
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
+}
+@keyframes bounce {
+    0%, 100% {
+        transform:
+            translateY(0);
+    }
+    50% {
+        transform:
+            translateY(10px);
+    }
+}
+/* =========================================
+   MOBILE
+========================================= */
+@media (max-width: 600px) {
+    .curtainNames {
+        font-size: 43px;
+    }
+    .curtainSmall {
+        font-size: 11px;
+        letter-spacing: 3px;
+    }
+    .curtainDate {
+        font-size: 12px;
+    }
+    .names {
+        font-size: 58px;
+    }
+    .date {
+        font-size: 15px;
+        letter-spacing: 4px;
+    }
+    .timeBox {
+        width: 75px;
+        padding: 16px 5px;
+    }
+    .timeNumber {
+        font-size: 27px;
+    }
+    .timeLabel {
+        font-size: 8px;
+    }
+    .sectionTitle {
+        font-size: 33px;
+    }
+    .detailCard h2 {
+        font-size: 31px;
+    }
+}
+</style>
+</head>
+<body>
+<!-- =========================================
+     AUTOMATIC CURTAIN
+========================================= -->
+<div id="curtainScreen">
+    <div class="curtain left"></div>
+    <div class="curtain right"></div>
+    <div class="curtainContent">
+        <div class="curtainSmall">
+            Wedding Invitation
+        </div>
+        <h1 class="curtainNames">
+            Mostafa & Amira
+        </h1>
+        <div class="curtainDate">
+            01 · 11 · 2026
+        </div>
+    </div>
+</div>
+<!-- =========================================
+     HERO
+========================================= -->
+<section class="hero">
+    <div class="branch topLeft"></div>
+    <div class="branch topRight"></div>
+    <div class="heroInner">
+        <div class="smallText">
+            Together with their families
+        </div>
+        <h1 class="names">
+            Mostafa
+        </h1>
+        <div class="and">
+            &
+        </div>
+        <h1 class="names">
+            Amira
+        </h1>
+        <div class="date">
+            01 · 11 · 2026
+        </div>
+        <div class="scrollText">
+            SCROLL TO DISCOVER
+            <div class="scrollArrow">
+                ↓
+            </div>
+        </div>
+    </div>
+</section>
+<!-- =========================================
+     COUPLE PHOTO
+========================================= -->
+<section class="photoSection">
+    <div class="branch topLeft"></div>
+    <div class="branch bottomRight"></div>
+    <div class="photoWrapper">
+        <div class="photoFrame">
+            <!-- صورة مصطفى وأميرة -->
+            <img
+                src="d954b11a-fb80-4180-af8d-680d21148b3b.jpeg"
+                alt="Mostafa and Amira"
+            >
+        </div>
+        <div class="photoCaption">
+            <h2>
+                Our Story
+            </h2>
+            <p>
+                TWO HEARTS · ONE BEAUTIFUL JOURNEY
+            </p>
+        </div>
+    </div>
+</section>
+<!-- =========================================
+     COUNTDOWN
+========================================= -->
+<section class="countdownSection">
+    <div class="branch topLeft"></div>
+    <h2 class="sectionTitle">
+        Counting Down
+    </h2>
+    <p class="sectionSubtitle">
+        UNTIL WE SAY "I DO"
+    </p>
+    <div class="countdown">
+        <div class="timeBox">
+            <span
+                class="timeNumber"
+                id="days">
+                0
+            </span>
+            <span class="timeLabel">
+                Days
+            </span>
+        </div>
+        <div class="timeBox">
+            <span
+                class="timeNumber"
+                id="hours">
+                0
+            </span>
+            <span class="timeLabel">
+                Hours
+            </span>
+        </div>
+        <div class="timeBox">
+            <span
+                class="timeNumber"
+                id="minutes">
+                0
+            </span>
+            <span class="timeLabel">
+                Minutes
+            </span>
+        </div>
+        <div class="timeBox">
+            <span
+                class="timeNumber"
+                id="seconds">
+                0
+            </span>
+            <span class="timeLabel">
+                Seconds
+            </span>
+        </div>
+    </div>
+</section>
+<!-- =========================================
+     WEDDING DETAILS
+========================================= -->
+<section class="details">
+    <div class="branch topRight"></div>
+    <div class="branch bottomLeft"></div>
+    <div class="detailsInner">
+        <div class="detailCard">
+            <div class="detailIcon">
+                ♡
+            </div>
+            <div class="smallText">
+                The Wedding
+            </div>
+            <h2>
+                Mostafa & Amira
+            </h2>
+            <p>
+                Sunday, 1 November 2026
+            </p>
+            <p>
+                Al Masa Hotel
+            </p>
+            <p>
+                Zumorda Hall · Nasr City
+            </p>
+            <a
+                class="mapButton"
+                href="https://www.google.com/maps/search/?api=1&query=Al+Masa+Hotel+Nasr+City+Cairo"
+                target="_blank">
+                VIEW LOCATION
+            </a>
+        </div>
+    </div>
+</section>
+<!-- =========================================
+     FINAL
+========================================= -->
+<section class="finalSection">
+    <div>
+        <div class="smallText">
+            We can't wait to celebrate with you
+        </div>
+        <h1 class="finalNames">
+            Mostafa & Amira
+        </h1>
+        <p>
+            01 · 11 · 2026
+        </p>
+    </div>
+</section>
+<script>
+/* =========================================
+   CURTAIN OPENS AUTOMATICALLY
+========================================= */
+window.addEventListener("load", function() {
+    const curtain =
+        document.getElementById("curtainScreen");
+    /*
+       الستارة تبدأ تفتح
+       بعد أقل من ثانية
+    */
+    setTimeout(function() {
+        curtain.classList.add("open");
+    }, 900);
+    /*
+       إزالة الستارة من الشاشة
+       بعد انتهاء الحركة
+    */
+    setTimeout(function() {
+        curtain.style.opacity = "0";
+        curtain.style.visibility = "hidden";
+    }, 3700);
+    /*
+       بعد ظهور الصورة
+       يبدأ الـ auto-scroll
+    */
+    setTimeout(function() {
+        startAutoScroll();
+    }, 5600);
+});
+/* =========================================
+   AUTO SCROLL
+========================================= */
+let autoScrolling = true;
+let scrollAnimation;
+/*
+   سرعة الـ Auto Scroll
+   0.7 = بطيء جدًا
+   1.2 = هادي
+   2 = متوسط
+   3 = سريع
+*/
+const scrollSpeed = 1.2;
+function startAutoScroll() {
+    if (!autoScrolling) {
+        return;
+    }
+    function scroll() {
+        if (!autoScrolling) {
+            return;
+        }
+        const currentPosition =
+            window.scrollY;
+        const maxPosition =
+            document.documentElement.scrollHeight
+            - window.innerHeight;
+        /*
+           لو وصلنا للنهاية
+           نوقف الحركة
+        */
+        if (currentPosition >= maxPosition - 2) {
+            autoScrolling = false;
+            return;
+        }
+        window.scrollBy(
+            0,
+            scrollSpeed
+        );
+        scrollAnimation =
+            requestAnimationFrame(scroll);
+    }
+    scroll();
+}
+/* =========================================
+   USER CAN TAKE CONTROL
+========================================= */
+function stopAutoScroll() {
+    autoScrolling = false;
+    if (scrollAnimation) {
+        cancelAnimationFrame(
+            scrollAnimation
+        );
+    }
+}
+/*
+   لو المستخدم لمس الشاشة
+*/
+window.addEventListener(
+    "touchstart",
+    stopAutoScroll,
+    { passive: true }
+);
+/*
+   لو المستخدم حرّك الشاشة
+*/
+window.addEventListener(
+    "touchmove",
+    stopAutoScroll,
+    { passive: true }
+);
+/*
+   لو المستخدم عمل Scroll بالماوس
+*/
+window.addEventListener(
+    "wheel",
+    stopAutoScroll,
+    { passive: true }
+);
+/*
+   لو المستخدم ضغط أزرار الحركة
+*/
+window.addEventListener(
+    "keydown",
+    function(event) {
+        const keys = [
+            "ArrowDown",
+            "ArrowUp",
+            "PageDown",
+            "PageUp",
+            "Home",
+            "End",
+            " "
+        ];
+        if (keys.includes(event.key)) {
+            stopAutoScroll();
+        }
+    }
+);
+/* =========================================
+   COUNTDOWN
+========================================= */
+/*
+   Wedding date:
+   1 November 2026
+   7:00 PM
+*/
+const weddingDate =
+    new Date(
+        "November 1, 2026 19:00:00"
+    ).getTime();
+function updateCountdown() {
+    const now =
+        new Date().getTime();
+    const difference =
+        weddingDate - now;
+    if (difference <= 0) {
+        document.getElementById(
+            "days"
+        ).innerText = "0";
+        document.getElementById(
+            "hours"
+        ).innerText = "0";
+        document.getElementById(
+            "minutes"
+        ).innerText = "0";
+        document.getElementById(
+            "seconds"
+        ).innerText = "0";
+        return;
+    }
+    const days =
+        Math.floor(
+            difference /
+            (1000 * 60 * 60 * 24)
+        );
+    const hours =
+        Math.floor(
+            (
+                difference %
+                (1000 * 60 * 60 * 24)
+            )
+            /
+            (1000 * 60 * 60)
+        );
+    const minutes =
+        Math.floor(
+            (
+                difference %
+                (1000 * 60 * 60)
+            )
+            /
+            (1000 * 60)
+        );
+    const seconds =
+        Math.floor(
+            (
+                difference %
+                (1000 * 60)
+            )
+            /
+            1000
+        );
+    document.getElementById(
+        "days"
+    ).innerText = days;
+    document.getElementById(
+        "hours"
+    ).innerText =
+        String(hours).padStart(2, "0");
+    document.getElementById(
+        "minutes"
+    ).innerText =
+        String(minutes).padStart(2, "0");
+    document.getElementById(
+        "seconds"
+    ).innerText =
+        String(seconds).padStart(2, "0");
+}
+updateCountdown();
+setInterval(
+    updateCountdown,
+    1000
+);
+</script>
+</body>
+</html>
