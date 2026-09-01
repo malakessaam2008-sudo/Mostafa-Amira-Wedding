@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mostafa & Amira Wedding</title>
+<style>
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: #f8f5ef;
+  color: #403a35;
+  font-family: Georgia, "Times New Roman", serif;
+}
+/* =========================
+   RED THEATRE CURTAINS
+========================= */
+#curtains {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  overflow: hidden;
+  background: #300008;
+}
+/* Curtains */
+.curtain {
+  position: absolute;
+  top: -5%;
+  width: 58%;
+  height: 110%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #430009 0px,
+      #8d101c 18px,
+      #b51d2a 35px,
+      #6b0b14 52px,
+      #3b0007 70px
+    );
+  box-shadow:
+    inset 0 0 45px rgba(0,0,0,.65),
+    0 0 30px rgba(0,0,0,.6);
+  transition:
+    transform 1.9s cubic-bezier(.77,0,.18,1);
+}
+/* Fabric lighting */
+.curtain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.45),
+      transparent 18%,
+      rgba(255,255,255,.08) 35%,
+      transparent 50%,
+      rgba(0,0,0,.4) 70%,
+      transparent
+    );
+}
+/* Left curtain */
+.curtain.left {
+  left: -8%;
+}
+/* Right curtain */
+.curtain.right {
+  right: -8%;
+}
+/* Opening animation */
+#curtains.open .curtain.left {
+  transform: translateX(-105%);
+}
+#curtains.open .curtain.right {
+  transform: translateX(105%);
+}
+/* =========================
+   MAIN WEBSITE
+========================= */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  background:
+    linear-gradient(
+      rgba(248,245,239,.72),
+      rgba(248,245,239,.72)
+    );
+}
+.hero-content {
+  max-width: 800px;
+}
+.small-title {
+  font-size: 15px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+.names {
+  font-size: clamp(45px, 9vw, 90px);
+  font-weight: normal;
+  margin: 0;
+  color: #6f1820;
+}
+.and {
+  font-size: 28px;
+  margin: 10px 0;
+  font-style: italic;
+}
+.subtitle {
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin-top: 25px;
+}
+/* =========================
+   PHOTO
+========================= */
+.photo-section {
+  padding: 70px 20px;
+  text-align: center;
+}
+.photo-placeholder {
+  width: min(90%, 700px);
+  height: 450px;
+  margin: auto;
+  border: 1px solid #d8cec0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9a8d80;
+  font-size: 18px;
+  letter-spacing: 2px;
+  background: #eee8df;
+}
+/* =========================
+   COUNTDOWN
+========================= */
+.countdown-section {
+  padding: 80px 20px;
+  text-align: center;
+  background: #eee7dd;
+}
+.section-title {
+  font-size: 30px;
+  font-weight: normal;
+  color: #6f1820;
+  margin-bottom: 35px;
+}
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.time-box {
+  min-width: 100px;
+  padding: 20px 15px;
+  background: #f8f5ef;
+  border: 1px solid #d8cec0;
+}
+.time-number {
+  display: block;
+  font-size: 35px;
+  color: #6f1820;
+}
+.time-label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+/* =========================
+   DETAILS
+========================= */
+.details {
+  padding: 80px 20px;
+  text-align: center;
+}
+.detail-card {
+  max-width: 650px;
+  margin: 20px auto;
+  padding: 35px 25px;
+  border-top: 1px solid #d8cec0;
+  border-bottom: 1px solid #d8cec0;
+}
+.detail-card h3 {
+  color: #6f1820;
+  font-size: 25px;
+  font-weight: normal;
+}
+.detail-card p {
+  font-size: 17px;
+  line-height: 1.8;
+}
+/* =========================
+   FOOTER
+========================= */
+footer {
+  padding: 60px 20px;
+  text-align: center;
+  background: #403a35;
+  color: white;
+}
+footer .names-footer {
+  font-size: 28px;
+  letter-spacing: 2px;
+}
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 600px) {
+  .curtain {
+    width: 65%;
+  }
+  .names {
+    font-size: 48px;
+  }
+  .photo-placeholder {
+    height: 330px;
+  }
+  .time-box {
+    min-width: 75px;
+  }
+  .time-number {
+    font-size: 27px;
+  }
+}
+</style>
+</head>
+<body>
+<!-- =========================
+     OPENING CURTAINS
+========================= -->
+<div id="curtains">
+  <div class="curtain left"></div>
+  <div class="curtain right"></div>
+</div>
+<!-- =========================
+     HERO
+========================= -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="small-title">
+      Together with their families
+    </div>
+    <h1 class="names">
+      Mostafa
+    </h1>
+    <div class="and">
+      &
+    </div>
+    <h1 class="names">
+      Amira
+    </h1>
+    <div class="subtitle">
+      WE INVITE YOU TO CELEBRATE OUR WEDDING
+    </div>
+  </div>
+</section>
+<!-- =========================
+     PHOTO
+========================= -->
+<section class="photo-section">
+  <h2 class="section-title">
+    Our Story
+  </h2>
+  <div class="photo-placeholder">
+    YOUR PHOTO HERE
+  </div>
+</section>
+<!-- =========================
+     COUNTDOWN
+========================= -->
+<section class="countdown-section">
+  <h2 class="section-title">
+    Counting Down To Our Wedding
+  </h2>
+  <div class="countdown">
+    <div class="time-box">
+      <span class="time-number" id="days">0</span>
+      <span class="time-label">Days</span>
+    </div>
+    <div class="time-box">
+      <span class="time-number" id="hours">0</span>
+      <span class="time-label">Hours</span>
+    </div>
+    <div class="time-box">
+      <span class="time-number" id="minutes">0</span>
+      <span class="time-label">Minutes</span>
+    </div>
+    <div class="time-box">
+      <span class="time-number" id="seconds">0</span>
+      <span class="time-label">Seconds</span>
+    </div>
+  </div>
+</section>
+<!-- =========================
+     WEDDING DETAILS
+========================= -->
+<section class="details">
+  <h2 class="section-title">
+    Wedding Details
+  </h2>
+  <div class="detail-card">
+    <h3>
+      Wedding Day
+    </h3>
+    <p>
+      Sunday, November 1, 2026
+    </p>
+  </div>
+  <div class="detail-card">
+    <h3>
+      Wedding Venue
+    </h3>
+    <p>
+      Al Masa Hotel<br>
+      Nasr City, Cairo<br>
+      Zumorda Hall
+    </p>
+  </div>
+  <div class="detail-card">
+    <h3>
+      Your Presence Matters
+    </h3>
+    <p>
+      Your presence would be the greatest gift we could receive!
+    </p>
+  </div>
+</section>
+<!-- =========================
+     FOOTER
+========================= -->
+<footer>
+  <div class="names-footer">
+    Mostafa & Amira
+  </div>
+  <p>
+    We can't wait to celebrate with you.
+  </p>
+</footer>
+<!-- =========================
+     SCRIPTS
+========================= -->
+<script>
+/* =========================
+   AUTO OPEN CURTAINS
+========================= */
+window.addEventListener("load", function () {
+  setTimeout(function () {
+    document
+      .getElementById("curtains")
+      .classList.add("open");
+    setTimeout(function () {
+      document
+        .getElementById("curtains")
+        .style.display = "none";
+    }, 2000);
+  }, 600);
+});
+/* =========================
+   COUNTDOWN
+========================= */
+const weddingDate = new Date("November 1, 2026 19:00:00").getTime();
+function updateCountdown() {
+  const now = new Date().getTime();
+  const difference = weddingDate - now;
+  if (difference <= 0) {
+    document.getElementById("days").innerText = "0";
+    document.getElementById("hours").innerText = "0";
+    document.getElementById("minutes").innerText = "0";
+    document.getElementById("seconds").innerText = "0";
+    return;
+  }
+  const days = Math.floor(
+    difference / (1000 * 60 * 60 * 24)
+  );
+  const hours = Math.floor(
+    (difference / (1000 * 60 * 60)) % 24
+  );
+  const minutes = Math.floor(
+    (difference / (1000 * 60)) % 60
+  );
+  const seconds = Math.floor(
+    (difference / 1000) % 60
+  );
+  document.getElementById("days").innerText = days;
+  document.getElementById("hours").innerText =
+    String(hours).padStart(2, "0");
+  document.getElementById("minutes").innerText =
+    String(minutes).padStart(2, "0");
+  document.getElementById("seconds").innerText =
+    String(seconds).padStart(2, "0");
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
+</body>
+</html>
