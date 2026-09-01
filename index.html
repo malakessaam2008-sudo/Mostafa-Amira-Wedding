@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mostafa & Amira Wedding</title>
+<style>
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: auto;
+}
+body {
+  margin: 0;
+  background: #f8f5ef;
+  color: #403a35;
+  font-family: Georgia, "Times New Roman", serif;
+  text-align: center;
+  overflow-x: hidden;
+}
+/* =========================
+   OPENING
+========================= */
+#opening {
+  position: fixed;
+  inset: 0;
+  background: #f8f5ef;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1s ease;
+}
+.open-card {
+  width: 88%;
+  max-width: 430px;
+  padding: 65px 30px;
+  border: 1px solid #cbbba6;
+  background: rgba(255,255,255,0.35);
+  position: relative;
+}
+.open-card::before,
+.open-card::after {
+  content: "♡";
+  position: absolute;
+  color: #bba58c;
+  font-size: 30px;
+}
+.open-card::before {
+  top: 15px;
+  left: 18px;
+}
+.open-card::after {
+  bottom: 15px;
+  right: 18px;
+}
+.open-small {
+  font-size: 13px;
+  letter-spacing: 5px;
+  margin-bottom: 25px;
+}
+.open-names {
+  font-size: 48px;
+  font-weight: normal;
+  line-height: 1.2;
+}
+.open-date {
+  margin-top: 25px;
+  font-size: 16px;
+  letter-spacing: 4px;
+}
+.open-button {
+  margin-top: 45px;
+  padding: 15px 32px;
+  border: 1px solid #9f8d78;
+  background: transparent;
+  color: #403a35;
+  letter-spacing: 3px;
+  font-family: Georgia, serif;
+  cursor: pointer;
+}
+/* =========================
+   CURTAIN
+========================= */
+#curtainLeft,
+#curtainRight {
+  position: fixed;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 100000;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #cfc1b0 0px,
+      #eee7dc 35px,
+      #c2b29e 70px,
+      #f1ebe3 105px
+    );
+  box-shadow:
+    inset 0 0 50px rgba(70,50,30,.18);
+  transition:
+    transform 2.4s cubic-bezier(.77,0,.18,1);
+}
+#curtainLeft {
+  left: 0;
+}
+#curtainRight {
+  right: 0;
+}
+#curtainLeft.open {
+  transform: translateX(-100%);
+}
+#curtainRight.open {
+  transform: translateX(100%);
+}
+/* =========================
+   MUSIC
+========================= */
+#musicPlayer {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  left: -10px;
+  top: -10px;
+  opacity: 0;
+  pointer-events: none;
+}
+/* =========================
+   FIREWORKS
+========================= */
+#fireworks {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  display: none;
+}
+canvas {
+  width: 100%;
+  height: 100%;
+}
+/* =========================
+   BRANCHES
+========================= */
+.branch {
+  position: fixed;
+  width: 180px;
+  height: 180px;
+  z-index: 10;
+  pointer-events: none;
+  opacity: .65;
+}
+.branch-line {
+  position: absolute;
+  width: 150px;
+  height: 3px;
+  background: #c8b49b;
+  border-radius: 50%;
+  transform: rotate(25deg);
+}
+.leaf {
+  position: absolute;
+  width: 24px;
+  height: 11px;
+  background: #d2bea5;
+  border-radius: 100% 0 100% 0;
+}
+.leaf:nth-child(2) {
+  top: 35px;
+  left: 40px;
+  transform: rotate(-25deg);
+}
+.leaf:nth-child(3) {
+  top: 58px;
+  left: 65px;
+  transform: rotate(25deg);
+}
+.leaf:nth-child(4) {
+  top: 80px;
+  left: 90px;
+  transform: rotate(-25deg);
+}
+.leaf:nth-child(5) {
+  top: 103px;
+  left: 115px;
+  transform: rotate(25deg);
+}
+.leaf:nth-child(6) {
+  top: 125px;
+  left: 135px;
+  transform: rotate(-25deg);
+}
+.top-left {
+  top: -30px;
+  left: -35px;
+  transform: rotate(-10deg);
+}
+.top-right {
+  top: -30px;
+  right: -35px;
+  transform: scaleX(-1) rotate(-10deg);
+}
+.bottom-left {
+  bottom: -30px;
+  left: -35px;
+  transform: scaleY(-1) rotate(-10deg);
+}
+.bottom-right {
+  bottom: -30px;
+  right: -35px;
+  transform: scale(-1) rotate(-10deg);
+}
+/* =========================
+   MAIN
+========================= */
+.container {
+  width: 100%;
+  max-width: 850px;
+  margin: auto;
+  padding: 55px 25px 80px;
+  position: relative;
+  z-index: 5;
+}
+.families {
+  font-size: 20px;
+  letter-spacing: 7px;
+  line-height: 1.5;
+  margin-bottom: 45px;
+}
+h1 {
+  font-size: 76px;
+  font-weight: normal;
+  margin: 0;
+  line-height: 1.05;
+}
+.and {
+  font-size: 50px;
+  margin: 25px 0;
+}
+.date {
+  font-size: 29px;
+  letter-spacing: 8px;
+  margin-top: 55px;
+  margin-bottom: 65px;
+}
+/* =========================
+   TIME
+========================= */
+.time {
+  display: block;
+  margin-top: 18px;
+  color: #9f8d78;
+  font-size: 19px;
+  letter-spacing: 3px;
+}
+.time-number {
+  display: block;
+  margin-top: 10px;
+  color: #8d7b68;
+  font-size: 15px;
+  letter-spacing: 3px;
+}
+/* =========================
+   PHOTO
+========================= */
+.photo-frame {
+  max-width: 680px;
+  margin: auto;
+  padding: 18px;
+  position: relative;
+}
+.photo-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid #bda991;
+  pointer-events: none;
+}
+.photo-frame::after {
+  content: "♡";
+  position: absolute;
+  right: -18px;
+  top: 35px;
+  color: #bda991;
+  font-size: 52px;
+}
+.photo-card {
+  background: white;
+  padding: 8px;
+  box-shadow:
+    0 15px 40px rgba(0,0,0,.12);
+}
+.photo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* =========================
+   MESSAGE
+========================= */
+.message {
+  max-width: 720px;
+  margin: 55px auto 75px;
+  font-size: 24px;
+  line-height: 1.9;
+}
+/* =========================
+   COUNTDOWN
+========================= */
+.section-title {
+  font-size: 27px;
+  letter-spacing: 6px;
+  line-height: 1.5;
+  margin-bottom: 35px;
+}
+.countdown {
+  display: grid;
+  grid-template-columns:
+    repeat(4,1fr);
+  gap: 15px;
+  max-width: 700px;
+  margin: auto;
+}
+.time-box {
+  background: white;
+  padding: 25px 10px;
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.08);
+}
+.number {
+  display: block;
+  font-size: 40px;
+  font-weight: bold;
+}
+.label {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  letter-spacing: 3px;
+}
+/* =========================
+   CALENDAR
+========================= */
+.calendar-card {
+  max-width: 520px;
+  margin: 85px auto 0;
+  padding: 38px 25px;
+  background: rgba(255,255,255,.72);
+  border: 1px solid #d1c1ad;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.06);
+}
+.calendar-title {
+  font-size: 25px;
+  letter-spacing: 5px;
+}
+.calendar-year {
+  font-size: 15px;
+  letter-spacing: 4px;
+  margin-top: 8px;
+  color: #9f8d78;
+}
+.calendar-grid {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns:
+    repeat(7,1fr);
+  gap: 14px 5px;
+  align-items: center;
+}
+.calendar-grid div {
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+.weekday {
+  font-size: 11px !important;
+  letter-spacing: 1px;
+  color: #9f8d78;
+}
+.wedding-day {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  margin: auto;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  color: #403a35;
+  z-index: 1;
+}
+.wedding-day::before {
+  content: "♡";
+  position: absolute;
+  font-size: 58px;
+  line-height: 1;
+  color: #c2aa8e;
+  z-index: -1;
+  top: -7px;
+}
+.add-calendar {
+  display: inline-block;
+  margin-top: 35px;
+  padding: 13px 25px;
+  border: 1px solid #a9967e;
+  color: #403a35;
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-size: 13px;
+}
+/* =========================
+   VENUE
+========================= */
+.venue {
+  margin-top: 85px;
+  padding: 45px 20px;
+  background: white;
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.08);
+}
+.venue h2 {
+  font-size: 30px;
+  font-weight: normal;
+  letter-spacing: 4px;
+}
+.venue p {
+  font-size: 20px;
+  line-height: 1.7;
+}
+.map-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 28px;
+  background: #403a35;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+}
+.footer {
+  margin-top: 70px;
+  font-size: 17px;
+  letter-spacing: 3px;
+}
+/* =========================
+   MOBILE
+========================= */
+@media (max-width:600px) {
+  .branch {
+    width: 120px;
+    height: 120px;
+  }
+  .leaf {
+    width: 17px;
+    height: 8px;
+  }
+  .container {
+    padding: 40px 18px 60px;
+  }
+  .families {
+    font-size: 15px;
+    letter-spacing: 4px;
+  }
+  h1 {
+    font-size: 55px;
+  }
+  .and {
+    font-size: 38px;
+  }
+  .date {
+    font-size: 21px;
+    letter-spacing: 5px;
+    margin-bottom: 50px;
+  }
+  .time {
+    font-size: 16px;
+    letter-spacing: 2px;
+  }
+  .time-number {
+    font-size: 12px;
+  }
+  .photo-frame {
+    padding: 12px;
+  }
+  .photo-frame::after {
+    right: -8px;
+    font-size: 40px;
+  }
+  .message {
+    font-size: 20px;
+  }
+  .section-title {
+    font-size: 21px;
+    letter-spacing: 4px;
+  }
+  .countdown {
+    gap: 7px;
+  }
+  .time-box {
+    padding: 18px 4px;
+  }
+  .number {
+    font-size: 28px;
+  }
+  .label {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+  .calendar-card {
+    padding: 30px 12px;
+  }
+  .calendar-grid {
+    gap: 10px 2px;
+  }
+  .calendar-grid div {
+    font-size: 12px;
+  }
+  .weekday {
+    font-size: 9px !important;
+  }
+  .wedding-day {
+    width: 34px;
+    height: 34px;
+  }
+  .wedding-day::before {
+    font-size: 48px;
+  }
+  .venue h2 {
+    font-size: 23px;
+  }
+}
+/* =========================
+   AUTO SCROLL
+========================= */
+body.auto-scrolling {
+  scroll-behavior: auto;
+}
+</style>
+</head>
+<body>
+<!-- =========================
+     OPENING CARD
+========================= -->
+<div id="opening">
+  <div class="open-card">
+    <div class="open-small">
+      YOU ARE INVITED
+    </div>
+    <div class="open-names">
+      Mostafa<br>
+      &amp;<br>
+      Amira
+    </div>
+    <div class="open-date">
+      01 · 11 · 2026
+    </div>
+    <button
+      class="open-button"
+      onclick="openInvitation()">
+      OPEN INVITATION
+    </button>
+  </div>
+</div>
+<!-- =========================
+     CURTAINS
+========================= -->
+<div id="curtainLeft"></div>
+<div id="curtainRight"></div>
+<!-- =========================
+     MUSIC
+========================= -->
+<div id="musicPlayer">
+  <iframe
+    id="youtubePlayer"
+    width="1"
+    height="1"
+    src="https://www.youtube.com/embed/Tvpge6eYoPI?enablejsapi=1&autoplay=0&loop=1&playlist=Tvpge6eYoPI"
+    allow="autoplay">
+  </iframe>
+</div>
+<!-- =========================
+     FIREWORKS
+========================= -->
+<div id="fireworks">
+  <canvas id="fireworksCanvas"></canvas>
+</div>
+<!-- =========================
+     BRANCHES
+========================= -->
+<div class="branch top-left">
+  <div class="branch-line"></div>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+</div>
+<div class="branch top-right">
+  <div class="branch-line"></div>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+</div>
+<div class="branch bottom-left">
+  <div class="branch-line"></div>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+</div>
+<div class="branch bottom-right">
+  <div class="branch-line"></div>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+</div>
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+<div class="container">
+  <div class="families">
+    TOGETHER WITH THEIR<br>
+    FAMILIES
+  </div>
+  <h1>
+    Mostafa
+  </h1>
+  <div class="and">
+    &amp;
+  </div>
+  <h1>
+    Amira
+  </h1>
+  <!-- DATE -->
+  <div class="date">
+    01 · 11 · 2026
+    <span class="time">
+      At six in the evening
+    </span>
+    <span class="time-number">
+      6:00 PM
+    </span>
+  </div>
+  <!-- PHOTO -->
+  <div class="photo-frame">
+    <div class="photo-card">
+      <img
+        src="d954b11a-fb80-4180-af8d-680d21148b3b.jpeg"
+        alt="Mostafa and Amira"
+        class="photo">
+    </div>
+  </div>
+  <!-- MESSAGE -->
+  <p class="message">
+    We invite you to celebrate our wedding
+    and share this special day with us.
+    Your presence would be the greatest gift
+    we could receive!
+  </p>
+  <!-- COUNTDOWN -->
+  <div class="section-title">
+    COUNTING DOWN TO OUR<br>
+    WEDDING
+  </div>
+  <div class="countdown">
+    <div class="time-box">
+      <span
+        class="number"
+        id="days">
+        0
+      </span>
+      <span class="label">
+        DAYS
+      </span>
+    </div>
+    <div class="time-box">
+      <span
+        class="number"
+        id="hours">
+        0
+      </span>
+      <span class="label">
+        HOURS
+      </span>
+    </div>
+    <div class="time-box">
+      <span
+        class="number"
+        id="minutes">
+        0
+      </span>
+      <span class="label">
+        MINUTES
+      </span>
+    </div>
+    <div class="time-box">
+      <span
+        class="number"
+        id="seconds">
+        0
+      </span>
+      <span class="label">
+        SECONDS
+      </span>
+    </div>
+  </div>
+  <!-- CALENDAR -->
+  <div class="calendar-card">
+    <div class="calendar-title">
+      NOVEMBER
+    </div>
+    <div class="calendar-year">
+      2026
+    </div>
+    <div class="calendar-grid">
+      <div class="weekday">MO</div>
+      <div class="weekday">TU</div>
+      <div class="weekday">WE</div>
+      <div class="weekday">TH</div>
+      <div class="weekday">FR</div>
+      <div class="weekday">SA</div>
+      <div class="weekday">SU</div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div class="wedding-day">
+        01
+      </div>
+      <div>02</div>
+      <div>03</div>
+      <div>04</div>
+      <div>05</div>
+      <div>06</div>
+      <div>07</div>
+      <div>08</div>
+      <div>09</div>
+      <div>10</div>
+      <div>11</div>
+      <div>12</div>
+      <div>13</div>
+      <div>14</div>
+      <div>15</div>
+      <div>16</div>
+      <div>17</div>
+      <div>18</div>
+      <div>19</div>
+      <div>20</div>
+      <div>21</div>
+      <div>22</div>
+      <div>23</div>
+      <div>24</div>
+      <div>25</div>
+      <div>26</div>
+      <div>27</div>
+      <div>28</div>
+      <div>29</div>
+      <div>30</div>
+    </div>
+    <a
+      class="add-calendar"
+      href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mostafa%20%26%20Amira%20Wedding&dates=20261101T180000/20261101T220000&details=Mostafa%20%26%20Amira%20Wedding&location=Al%20Masa%20Hotel%2C%20Nasr%20City%2C%20Cairo"
+      target="_blank">
+      ADD TO CALENDAR
+    </a>
+  </div>
+  <!-- VENUE -->
+  <div class="venue">
+    <h2>
+      WEDDING RECEPTION VENUE
+    </h2>
+    <p>
+      Al Masa Hotel<br>
+      Nasr City<br>
+      Zumorda Hall
+    </p>
+    <a
+      class="map-button"
+      href="https://www.google.com/maps/search/?api=1&query=Al+Masa+Hotel+Nasr+City+Cairo"
+      target="_blank">
+      📍 VIEW LOCATION
+    </a>
+  </div>
+  <div class="footer">
+    MOSTAFA &amp; AMIRA
+  </div>
+</div>
+<script>
+/* =========================
+   OPEN INVITATION
+========================= */
+let invitationOpened = false;
+function openInvitation() {
+  if (invitationOpened) {
+    return;
+  }
+  invitationOpened = true;
+  const opening =
+    document.getElementById("opening");
+  opening.style.opacity = "0";
+  /*
+     الستارة تبدأ تفتح
+  */
+  setTimeout(function() {
+    document
+      .getElementById("curtainLeft")
+      .classList
+      .add("open");
+    document
+      .getElementById("curtainRight")
+      .classList
+      .add("open");
+  }, 100);
+  /*
+     نخفي شاشة البداية
+  */
+  setTimeout(function() {
+    opening.style.display = "none";
+  }, 1200);
+  /*
+     تشغيل الأغنية بعد الضغط
+  */
+  setTimeout(function() {
+    const player =
+      document.getElementById(
+        "youtubePlayer"
+      );
+    player.contentWindow.postMessage(
+      JSON.stringify({
+        event: "command",
+        func: "playVideo",
+        args: []
+      }),
+      "*"
+    );
+  }, 500);
+  /*
+     FIREWORKS
+  */
+  setTimeout(function() {
+    startFireworks();
+  }, 600);
+  /*
+     AUTO SCROLL
+     يبدأ بعد ثانية واحدة فقط
+  */
+  setTimeout(function() {
+    startAutoScroll();
+  }, 1000);
+}
+/* =========================
+   AUTO SCROLL
+========================= */
+let autoScrollTimer = null;
+function startAutoScroll() {
+  if (autoScrollTimer !== null) {
+    clearInterval(
+      autoScrollTimer
+    );
+  }
+  autoScrollTimer =
+    setInterval(function() {
+      const current =
+        window.scrollY;
+      const maximum =
+        document.documentElement
+          .scrollHeight
+        -
+        window.innerHeight;
+      /*
+         لو وصل لآخر الصفحة
+      */
+      if (
+        current >=
+        maximum - 2
+      ) {
+        clearInterval(
+          autoScrollTimer
+        );
+        autoScrollTimer = null;
+        return;
+      }
+      /*
+         حركة بطيئة وناعمة
+      */
+      window.scrollBy(
+        0,
+        1
+      );
+    }, 25);
+}
+/* =========================
+   COUNTDOWN
+========================= */
+const weddingDate =
+  new Date(
+    "2026-11-01T18:00:00"
+  ).getTime();
+function updateCountdown() {
+  const now =
+    new Date().getTime();
+  const difference =
+    weddingDate - now;
+  if (difference <= 0) {
+    document.getElementById(
+      "days"
+    ).textContent = "0";
+    document.getElementById(
+      "hours"
+    ).textContent = "00";
+    document.getElementById(
+      "minutes"
+    ).textContent = "00";
+    document.getElementById(
+      "seconds"
+    ).textContent = "00";
+    return;
+  }
+  const days =
+    Math.floor(
+      difference /
+      (
+        1000 *
+        60 *
+        60 *
+        24
+      )
+    );
+  const hours =
+    Math.floor(
+      (
+        difference /
+        (
+          1000 *
+          60 *
+          60
+        )
+      ) % 24
+    );
+  const minutes =
+    Math.floor(
+      (
+        difference /
+        (
+          1000 *
+          60
+        )
+      ) % 60
+    );
+  const seconds =
+    Math.floor(
+      (
+        difference /
+        1000
+      ) % 60
+    );
+  document.getElementById(
+    "days"
+  ).textContent =
+    days;
+  document.getElementById(
+    "hours"
+  ).textContent =
+    String(hours)
+      .padStart(2, "0");
+  document.getElementById(
+    "minutes"
+  ).textContent =
+    String(minutes)
+      .padStart(2, "0");
+  document.getElementById(
+    "seconds"
+  ).textContent =
+    String(seconds)
+      .padStart(2, "0");
+}
+updateCountdown();
+setInterval(
+  updateCountdown,
+  1000
+);
+/* =========================
+   FIREWORKS
+========================= */
+function startFireworks() {
+  const container =
+    document.getElementById(
+      "fireworks"
+    );
+  const canvas =
+    document.getElementById(
+      "fireworksCanvas"
+    );
+  const ctx =
+    canvas.getContext("2d");
+  container.style.display =
+    "block";
+  canvas.width =
+    window.innerWidth;
+  canvas.height =
+    window.innerHeight;
+  let particles = [];
+  function createFirework(
+    x,
+    y
+  ) {
+    for (
+      let i = 0;
+      i < 70;
+      i++
+    ) {
+      const angle =
+        Math.random()
+        *
+        Math.PI
+        *
+        2;
+      const speed =
+        Math.random()
+        *
+        5
+        +
+        2;
+      particles.push({
+        x: x,
+        y: y,
+        vx:
+          Math.cos(angle)
+          *
+          speed,
+        vy:
+          Math.sin(angle)
+          *
+          speed,
+        life: 100
+      });
+    }
+  }
+  createFirework(
+    window.innerWidth
+      * .30,
+    window.innerHeight
+      * .35
+  );
+  setTimeout(function() {
+    createFirework(
+      window.innerWidth
+        * .70,
+      window.innerHeight
+        * .25
+    );
+  }, 600);
+  setTimeout(function() {
+    createFirework(
+      window.innerWidth
+        * .50,
+      window.innerHeight
+        * .45
+    );
+  }, 1200);
+  function animate() {
+    ctx.clearRect(
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
+    particles.forEach(
+      function(p) {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += .04;
+        p.life--;
+        ctx.globalAlpha =
+          p.life / 100;
+        ctx.beginPath();
+        ctx.arc(
+          p.x,
+          p.y,
+          2,
+          0,
+          Math.PI * 2
+        );
+        ctx.fillStyle =
+          "#c9b59b";
+        ctx.fill();
+      }
+    );
+    particles =
+      particles.filter(
+        p => p.life > 0
+      );
+    if (
+      particles.length > 0
+    ) {
+      requestAnimationFrame(
+        animate
+      );
+    } else {
+      container.style.display =
+        "none";
+    }
+  }
+  animate();
+}
+/* =========================
+   RESIZE
+========================= */
+window.addEventListener(
+  "resize",
+  function() {
+    const canvas =
+      document.getElementById(
+        "fireworksCanvas"
+      );
+    if (canvas) {
+      canvas.width =
+        window.innerWidth;
+      canvas.height =
+        window.innerHeight;
+    }
+  }
+);
+</script>
+</body>
+</html>
